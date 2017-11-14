@@ -1,0 +1,10 @@
+---
+
+domain: onecloud.tieto.com
+
+# DNS servers
+dns_servers:
+    - 8.8.8.8
+    - 8.8.4.4
+
+
