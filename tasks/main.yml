@@ -1,5 +1,5 @@
 ---
-- name: launch an instance of cfme
+- name: launch an instance on OpenStack
   os_server:
     state: present
     auth:
@@ -15,12 +15,12 @@
     timeout: 200
     flavor: "{{ flavor }}"
     security_groups: default
-    floating_ips: "{{ floating_ips }}"
+    floating_ips: "{{ floating_ip }}"
     meta: 
       hostname: "{{ hostname }}"
     nics: "{{ nic_ids }}"
 
-- name: delete the instance of cfme
+- name: delete the instance on OpenStack
   os_server:
     state: absent
     auth:
@@ -32,4 +32,4 @@
     region_name: "{{ region }}"
     availability_zone: "{{ availability_zone }}"
   when:
-    - lookup('env', 'DELETE_CFME_INSTANCE') == 'True'
+    - lookup('env', "DELETE_OS_INSTANCE_{{ hostname }}") == 'True'
