@@ -32,4 +32,4 @@
     region_name: "{{ region }}"
     availability_zone: "{{ availability_zone }}"
   when:
-    - lookup('env', "DELETE_OS_INSTANCE_{{ hostname }}") == 'True'
+    - DELETE_CFME_INSTANCE == 'True' 
