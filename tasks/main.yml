@@ -17,7 +17,8 @@
     security_groups: default
     meta: 
       hostname: "{{ inventory_hostname }}"
-    nics: "{{ nic_ids }}"
+    nics: 
+      - "{{ nic_ids }}"
 
 - name: assign floating ip
   os_floating_ip:
