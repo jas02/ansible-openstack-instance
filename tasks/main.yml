@@ -15,7 +15,6 @@
     timeout: 200
     flavor: "{{ flavor }}"
     security_groups: default
-    floating_ips: "{{ floating_ip }}"
     meta: 
       hostname: "{{ hostname }}"
     nics: "{{ nic_ids }}"
