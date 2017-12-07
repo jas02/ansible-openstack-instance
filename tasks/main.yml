@@ -22,7 +22,7 @@
 
 - name: assign floating ip
   os_floating_ip:
-    server: "{{ hostname }}"
+    server: "{{ inventory_hostname }}"
     state: present
     network: "{{ fip_network }}"
 
