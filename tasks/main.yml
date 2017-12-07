@@ -20,6 +20,12 @@
       hostname: "{{ hostname }}"
     nics: "{{ nic_ids }}"
 
+- name: assign floating ip
+  os_floating_ip:
+    server: "{{ hostname }}"
+    state: present
+    network: {{ fip_network }}
+
 - name: delete the instance on OpenStack
   os_server:
     state: absent
