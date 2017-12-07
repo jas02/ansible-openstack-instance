@@ -7,7 +7,7 @@
       username: "{{ openstack_username }}"
       password: "{{ openstack_password }}"
       project_name: "{{ openstack_project }}"
-    name: "{{ hostname }}"
+    name: "{{ inventory_hostname }}"
     region_name: "{{ region }}"
     availability_zone: "{{ availability_zone }}"
     image: "{{ image_id }}"
@@ -16,7 +16,7 @@
     flavor: "{{ flavor }}"
     security_groups: default
     meta: 
-      hostname: "{{ hostname }}"
+      hostname: "{{ inventory_hostname }}"
     nics: "{{ nic_ids }}"
 
 - name: assign floating ip
@@ -33,7 +33,7 @@
       username: "{{ openstack_username }}"
       password: "{{ openstack_password }}"
       project_name: "{{ openstack_project }}"
-    name: "{{ hostname }}"
+    name: "{{ inventory_hostname }}"
     region_name: "{{ region }}"
     availability_zone: "{{ availability_zone }}"
   when:
