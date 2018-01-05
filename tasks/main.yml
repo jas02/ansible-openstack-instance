@@ -2,8 +2,14 @@
 - import_tasks: create_instance.yml
   when: not DELETE_OS_INSTANCE
 
+- import_tasks: attach_fip.yml
+  when: openstack_attach_fip
+
 - import_tasks: delete_instance.yml
   when:  DELETE_OS_INSTANCE
 
 - import_tasks: create_storage.yml
   when: openstack_create_storage
+
+- import_tasks: attach_storage.yml
+  when: openstack_attach_storage
