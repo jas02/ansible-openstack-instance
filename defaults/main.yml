@@ -10,7 +10,7 @@ openstack_availability_zone: nova
 openstack_nic_ids: xxxxxxx-xxxxxxxxxx-xxxxxxxxx 
 openstack_image_id: xxxxxxx-xxxxxxxxx-xxxxxxxxx 
 openstack_key_name: openstack
-openstack_attach_fip: true
+openstack_attach_fip: false
 openstack_fip_network: "fip-01"
 openstack_ssh_key: "openstack/openstack.pem"
 openstack_create_storage: false
