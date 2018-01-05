@@ -1,2 +1,33 @@
 ---
-DELETE_CFME_INSTANCE: False
+# Call instance delete?
+DELETE_OS_INSTANCE: false
+
+# Necessary OpenShift variables
+ansible_connection: local
+openstack_auth_url: "https://example.com:35357/v2.0"
+openstack_region: swe2
+openstack_availability_zone: nova
+openstack_nic_ids: xxxxxxx-xxxxxxxxxx-xxxxxxxxx 
+openstack_image_id: xxxxxxx-xxxxxxxxx-xxxxxxxxx 
+openstac_key_name: openstack
+openstack_attach_fip: true
+openstack_fip_network: "fip-01"
+openstack_ssh_key: "openstack/openstack.pem"
+openstack_create_storage: true
+openstack_attach_storage: true
+
+# Storage related variables
+openstack_storage_name: storage-name
+openstack_storage_device: /dev/vdc
+
+
+openstack_domain: example.com
+openstack_dns_servers:
+    - 8.8.8.8
+    - 8.8.4.4
+
+# Authentication variables
+openstack_username: username
+openstack_password: password
+openstack_project: project_name
+

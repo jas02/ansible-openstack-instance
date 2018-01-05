@@ -1,0 +1,64 @@
+- name: launch an instance on OpenStack
+  os_server:
+    state: present
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    name: "{{ inventory_hostname }}"
+    region_name: "{{ openstack_region }}"
+    availability_zone: "{{ openstack_availability_zone }}"
+    image: "{{ openstack_image_id }}"
+    key_name: "{{ openstack_key_name }}"
+    timeout: 200
+    flavor: "{{ openstack_flavor }}"
+    security_groups: default
+    meta: 
+      hostname: "{{ inventory_hostname }}"
+    nics:
+      - net-id: "{{ openstack_nic_ids }}"
+
+- name: assign floating ip
+  os_floating_ip:
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    server: "{{ inventory_hostname }}"
+    state: present
+    reuse: yes
+    wait: true
+    network: "{{ openstack_fip_network }}"
+  when: attach_fip
+
+- name: create storage
+  os_volume:
+    state: present
+    size: 20
+    display_name: "{{ opestack_storage_name }}-{{ inventory_hostname }}"
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    region_name: "{{ openstack_region }}"
+    availability_zone: "{{ openstack_availability_zone }}"
+  when: openstack_create_storage
+
+- name: attach storage
+  os_server_volume:
+    state: present
+    server: "{{ inventory_hostname }}"
+    volume: "{{ openstack_storage_name }}-{{ inventory_hostname }}"
+    device: {{ openstack_storage_device }}
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    region_name: "{{ openstack_region }}"
+    availability_zone: "{{ openstack_availability_zone }}"
+  when: openstack_attach_storage
+
