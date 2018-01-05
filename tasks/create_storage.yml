@@ -2,7 +2,7 @@
   os_volume:
     state: present
     size: "{{ openstack_storage_size }}"
-    display_name: "{{ opestack_storage_name }}-{{ inventory_hostname }}"
+    display_name: "{{ openstack_storage_name }}-{{ inventory_hostname }}"
     auth:
       auth_url: "{{ openstack_auth_url }}"
       username: "{{ openstack_username }}"
