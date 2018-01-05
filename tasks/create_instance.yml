@@ -31,7 +31,7 @@
     reuse: yes
     wait: true
     network: "{{ openstack_fip_network }}"
-  when: attach_fip
+  when: openstack_attach_fip
 
 - name: create storage
   os_volume:
