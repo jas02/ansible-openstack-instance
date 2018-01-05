@@ -9,7 +9,7 @@ openstack_region: swe2
 openstack_availability_zone: nova
 openstack_nic_ids: xxxxxxx-xxxxxxxxxx-xxxxxxxxx 
 openstack_image_id: xxxxxxx-xxxxxxxxx-xxxxxxxxx 
-openstac_key_name: openstack
+openstack_key_name: openstack
 openstack_attach_fip: true
 openstack_fip_network: "fip-01"
 openstack_ssh_key: "openstack/openstack.pem"
