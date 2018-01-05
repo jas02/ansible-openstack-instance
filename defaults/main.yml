@@ -13,8 +13,8 @@ openstack_key_name: openstack
 openstack_attach_fip: true
 openstack_fip_network: "fip-01"
 openstack_ssh_key: "openstack/openstack.pem"
-openstack_create_storage: true
-openstack_attach_storage: true
+openstack_create_storage: false
+openstack_attach_storage: false
 
 # Storage related variables
 openstack_storage_name: storage-name
