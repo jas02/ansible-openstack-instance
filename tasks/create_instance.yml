@@ -33,20 +33,6 @@
     network: "{{ openstack_fip_network }}"
   when: openstack_attach_fip
 
-- name: create storage
-  os_volume:
-    state: present
-    size: 20
-    display_name: "{{ opestack_storage_name }}-{{ inventory_hostname }}"
-    auth:
-      auth_url: "{{ openstack_auth_url }}"
-      username: "{{ openstack_username }}"
-      password: "{{ openstack_password }}"
-      project_name: "{{ openstack_project }}"
-    region_name: "{{ openstack_region }}"
-    availability_zone: "{{ openstack_availability_zone }}"
-  when: openstack_create_storage
-
 - name: attach storage
   os_server_volume:
     state: present

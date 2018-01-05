@@ -17,8 +17,9 @@ openstack_create_storage: false
 openstack_attach_storage: false
 
 # Storage related variables
-openstack_storage_name: storage-name
+openstack_storage_name: default-storage
 openstack_storage_device: /dev/vdc
+openstack_storage_size: 20
 
 
 openstack_domain: example.com
