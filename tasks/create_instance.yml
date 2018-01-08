@@ -18,3 +18,4 @@
       hostname: "{{ inventory_hostname }}"
     nics:
       - net-id: "{{ openstack_nic_ids }}"
+    auto_ip: no
