@@ -9,7 +9,7 @@
   when:  DELETE_OS_INSTANCE
 
 - import_tasks: create_storage.yml
-  when: openstack_create_storage
+  when: openstack_create_storage and DELETE_OS_INSTANCE != True
 
 - import_tasks: attach_storage.yml
-  when: openstack_attach_storage
+  when: openstack_attach_storage and DELETE_OS_INSTANCE != True
