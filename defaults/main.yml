@@ -2,7 +2,7 @@
 # Call instance delete?
 DELETE_OS_INSTANCE: false
 
-# Necessary OpenShift variables
+# Necessary OpenStack variables
 ansible_connection: local
 openstack_auth_url: "https://example.com:35357/v2.0"
 openstack_region: swe2
@@ -12,6 +12,7 @@ openstack_image_id: xxxxxxx-xxxxxxxxx-xxxxxxxxx
 openstack_key_name: openstack
 openstack_attach_fip: false
 openstack_fip_network: "fip-01"
+openstack_fip_timeout: 60
 openstack_ssh_key: "openstack/openstack.pem"
 openstack_create_storage: false
 openstack_attach_storage: false

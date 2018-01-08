@@ -10,3 +10,4 @@
     reuse: yes
     wait: true
     network: "{{ openstack_fip_network }}"
+    timeout: "{{ openstack_fip_timeout }}"
