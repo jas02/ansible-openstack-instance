@@ -13,3 +13,6 @@
 
 - import_tasks: attach_storage.yml
   when: openstack_attach_storage and (not DELETE_OS_INSTANCE)
+
+- import_tasks: create_hosts_file.yml
+  when: openstack_create_hosts_file

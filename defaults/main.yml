@@ -33,3 +33,5 @@ openstack_username: username
 openstack_password: password
 openstack_project: project_name
 
+openstack_create_hosts_file: false
+openstack_hosts_filename: openstack/hosts-openshift

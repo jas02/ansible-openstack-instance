@@ -1,0 +1,22 @@
+---
+- name: get instance floating ip
+  os_floating_ip:
+    auth:
+      auth_url: "{{ auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    state: present
+    server: "{{ inventory_hostname }}"
+    wait: True
+  register: float
+
+- name: update inventory file
+  lineinfile:
+    path: "{{ openstack_hosts_filename }}"
+    state: present
+    regexp: '^{{ inventory_hostname }}'
+    line: "{{ inventory_hostname }} ansible_host={{ float['floating_ip']['floating_ip_address'] }}"
+  environment:
+    ANSIBLE_INVENTORY: "{{ openstack_hosts_filename }}"
+  
