@@ -11,6 +11,12 @@
     wait: True
   register: float
 
+- name: create inventory file
+  file:
+    path: "{{ openstack_hosts_filename }}"
+    state: touch
+    mode: 0644
+
 - name: update inventory file
   lineinfile:
     path: "{{ openstack_hosts_filename }}"
