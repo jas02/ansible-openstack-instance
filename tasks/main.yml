@@ -3,7 +3,7 @@
   when: not DELETE_OS_INSTANCE
 
 - import_tasks: attach_fip.yml
-  when: openstack_attach_fip
+  when: openstack_attach_fip and (not DELETE_OS_INSTANCE)
 
 - import_tasks: delete_instance.yml
   when:  DELETE_OS_INSTANCE
@@ -15,4 +15,4 @@
   when: openstack_attach_storage and (not DELETE_OS_INSTANCE)
 
 - import_tasks: create_hosts_file.yml
-  when: openstack_create_hosts_file
+  when: openstack_create_hosts_file and (not DELETE_OS_INSTANCE)
