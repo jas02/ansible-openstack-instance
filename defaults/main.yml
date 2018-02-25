@@ -38,4 +38,4 @@ openstack_hosts_filename: openstack/hosts-openshift
 
 # Static FIP address?
 openstack_use_static_floating_ip_address: false
-openstack_floating_ip_address: {{ floating_ips | default('10.42.145.100') }}
+openstack_floating_ip_address: "{{ floating_ips }}"
