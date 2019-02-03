@@ -18,11 +18,9 @@
     mode: 0644
 
 - name: update inventory file
-  lineinfile:
+  replace:
     path: "{{ openstack_hosts_filename }}"
-    state: present
-    regexp: '^{{ inventory_hostname }}'
-    line: "{{ inventory_hostname }} ansible_host={{ float['floating_ip']['floating_ip_address'] }}"
+    regexp: '^({{ inventory_hostname }}.*)'
+    replace: '\1 ansible_host={{ float['floating_ip']['floating_ip_address'] }}'
   environment:
     ANSIBLE_INVENTORY: "{{ openstack_hosts_filename }}"
-  
