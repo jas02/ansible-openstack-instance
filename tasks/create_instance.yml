@@ -17,5 +17,6 @@
     meta: 
       hostname: "{{ inventory_hostname }}"
     nics:
-      - net-id: "{{ openstack_nic_ids }}"
+      - net-id: "{{ item }}"
+    with_items: "{{ openstack_nic_ids | regex_findall('(?:[A-Za-z0-9]{1,12}\\-){4}[A-Za-z0-9]{1,12}') }}"
     auto_ip: no
