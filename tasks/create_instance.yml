@@ -16,7 +16,7 @@
     security_groups: default
     meta: 
       hostname: "{{ inventory_hostname }}"
+    auto_ip: no
     nics:
       - net-id: "{{ item }}"
-    with_items: "{{ openstack_nic_ids | regex_findall('(?:[A-Za-z0-9]{1,12}\\-){4}[A-Za-z0-9]{1,12}') }}"
-    auto_ip: no
+  loop: "{{ openstack_nic_ids | regex_findall('(?:[A-Za-z0-9]{1,12}\\-){4}[A-Za-z0-9]{1,12}') }}"
