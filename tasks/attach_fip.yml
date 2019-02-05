@@ -12,7 +12,7 @@
     network: "{{ openstack_fip_network }}"
     timeout: "{{ openstack_fip_timeout }}"
     floating_ip_address: "{{ openstack_floating_ip_address }}"
-  when: openstack_use_static_floating_ip_address
+  when: openstack_floating_ip_address
 
 - name: attach floating IP
   os_floating_ip:

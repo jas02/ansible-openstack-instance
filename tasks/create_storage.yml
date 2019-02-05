@@ -10,3 +10,4 @@
       project_name: "{{ openstack_project }}"
     region_name: "{{ openstack_region }}"
     availability_zone: "{{ openstack_availability_zone }}"
+    volume_type: "{{ openstack_volume_type }}"
