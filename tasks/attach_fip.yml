@@ -1,18 +1,19 @@
-- name: attach floating IP
-  os_floating_ip:
-    auth:
-      auth_url: "{{ openstack_auth_url }}"
-      username: "{{ openstack_username }}"
-      password: "{{ openstack_password }}"
-      project_name: "{{ openstack_project }}"
-    server: "{{ inventory_hostname }}"
-    state: present
-    reuse: yes
-    wait: true
-    network: "{{ openstack_fip_network }}"
-    timeout: "{{ openstack_fip_timeout }}"
-    floating_ip_address: "{{ openstack_floating_ip_address }}"
-  when: openstack_floating_ip_address
+# TODO - fix the static assignment of the FIP
+#- name: attach floating IP
+#  os_floating_ip:
+#    auth:
+#      auth_url: "{{ openstack_auth_url }}"
+#      username: "{{ openstack_username }}"
+#      password: "{{ openstack_password }}"
+#      project_name: "{{ openstack_project }}"
+#    server: "{{ inventory_hostname }}"
+#    state: present
+#    reuse: yes
+#    wait: true
+#    network: "{{ openstack_fip_network }}"
+#    timeout: "{{ openstack_fip_timeout }}"
+#    floating_ip_address: "{{ openstack_floating_ip_address }}"
+#  when: openstack_floating_ip_address
 
 - name: attach floating IP
   os_floating_ip:
