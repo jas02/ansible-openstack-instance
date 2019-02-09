@@ -1,21 +1,21 @@
 ---
 - import_tasks: create_static_ports.yml
-  when: openstack_create_static_ports and (not DELETE_OS_INSTANCE)
+  when: openstack_create_static_ports == 'true' and (not DELETE_OS_INSTANCE)
 
 - import_tasks: create_instance.yml
   when: not DELETE_OS_INSTANCE
 
 - import_tasks: attach_fip.yml
-  when: openstack_attach_fip and (not DELETE_OS_INSTANCE)
+  when: openstack_attach_fip == 'true' and (not DELETE_OS_INSTANCE)
 
 - import_tasks: delete_instance.yml
   when:  DELETE_OS_INSTANCE
 
 - import_tasks: create_storage.yml
-  when: openstack_create_storage and (not DELETE_OS_INSTANCE)
+  when: openstack_create_storage == 'true' and (not DELETE_OS_INSTANCE)
 
 - import_tasks: attach_storage.yml
-  when: openstack_attach_storage and (not DELETE_OS_INSTANCE)
+  when: openstack_attach_storage == 'true' and (not DELETE_OS_INSTANCE)
 
 - import_tasks: create_hosts_file.yml
-  when: openstack_create_hosts_file and (not DELETE_OS_INSTANCE)
+  when: openstack_create_hosts_file == 'true' and (not DELETE_OS_INSTANCE)
