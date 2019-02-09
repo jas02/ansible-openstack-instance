@@ -1,4 +1,7 @@
 ---
+- import_tasks: create_static_ports.yml
+  when: openstack_create_static_ports and (not DELETE_OS_INSTANCE)
+
 - import_tasks: create_instance.yml
   when: not DELETE_OS_INSTANCE
 

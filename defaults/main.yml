@@ -10,9 +10,6 @@ openstack_availability_zone: nova
 openstack_nic_ids: xxxxxxx-xxxxxxxxxx-xxxxxxxxx 
 openstack_image_id: xxxxxxx-xxxxxxxxx-xxxxxxxxx 
 openstack_key_name: openstack
-openstack_attach_fip: false
-openstack_fip_network: "fip-01"
-openstack_fip_timeout: 60
 openstack_ssh_key: "openstack/openstack.pem"
 openstack_create_storage: false
 openstack_attach_storage: false
@@ -37,5 +34,16 @@ openstack_create_hosts_file: false
 openstack_hosts_filename: openstack/hosts-openshift
 
 # Static FIP address?
-openstack_use_static_floating_ip_address: false
-openstack_floating_ip_address: "{{ floating_ips }}"
+openstack_floating_ip_address: false
+openstack_attach_fip: false
+openstack_fip_network: "fip-01"
+openstack_fip_timeout: 60
+
+# Static ports
+openstack_create_static_ports: false
+openstack_use_static_ports: false
+openstack_ports_config: "port1_bastion1:infrabackend:1.2.3.4,port2_bastion1:infrafrontend:1.2.4.3"
+
+# Set admin password for the instance
+openstack_instances_admin_password: false
+

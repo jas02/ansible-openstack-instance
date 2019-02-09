@@ -18,5 +18,64 @@
       hostname: "{{ inventory_hostname }}"
     auto_ip: no
     nics:
-      - net-id: "{{ item }}"
-  loop: "{{ openstack_nic_ids | regex_findall('(?:[A-Za-z0-9]{1,12}\\-){4}[A-Za-z0-9]{1,12}') }}"
+      - net-id: "{{ openstack_nic_ids }}"
+  when: not openstack_use_static_ports
+
+- name: set variable with port names
+  set_fact:
+    list_of_ports: "{{ openstack_ports_config | regex_findall('(?:([A-Za-z0-9_]{1,}):[A-Za-z0-9_]{1,})') }}"
+  when: openstack_use_static_ports
+
+- name: set ports string
+  set_fact:
+    string_with_ports: '{{ "port-name=" + ",port-name=".join(list_of_ports) }}'
+  when: openstack_use_static_ports
+
+- name: launch an instance on OpenStack
+  os_server:
+    state: present
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    name: "{{ inventory_hostname }}"
+    region_name: "{{ openstack_region }}"
+    availability_zone: "{{ openstack_availability_zone }}"
+    image: "{{ openstack_image_id }}"
+    key_name: "{{ openstack_key_name }}"
+    timeout: 200
+    flavor: "{{ openstack_flavor }}"
+    security_groups: default
+    meta: 
+      hostname: "{{ inventory_hostname }}"
+    auto_ip: no
+    nics: "{{ string_with_ports }}"
+  when: openstack_use_static_ports and (not openstack_instances_admin_password)
+
+- name: launch an instance on OpenStack
+  os_server:
+    state: present
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    name: "{{ inventory_hostname }}"
+    region_name: "{{ openstack_region }}"
+    availability_zone: "{{ openstack_availability_zone }}"
+    image: "{{ openstack_image_id }}"
+    key_name: "{{ openstack_key_name }}"
+    timeout: 200
+    flavor: "{{ openstack_flavor }}"
+    security_groups: default
+    meta: 
+      hostname: "{{ inventory_hostname }}"
+    auto_ip: no
+    userdata: |
+      #cloud-config
+      password: "{{ openstack_instances_admin_password }}"
+      chpasswd: { expire: False }
+      ssh_pwauth: True
+    nics: "{{ string_with_ports }}"
+  when: openstack_use_static_ports and openstack_instances_admin_password

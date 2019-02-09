@@ -1,0 +1,5 @@
+---
+- include_tasks: create_static_ports_inner.yml
+  loop: "{{ openstack_ports_config | regex_findall('(?:([A-Za-z0-9_:.]{1,}))') }}"
+  loop_control:
+    loop_var: list_of_ports
