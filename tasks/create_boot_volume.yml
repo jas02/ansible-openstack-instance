@@ -1,0 +1,13 @@
+- name: create boot volume
+  os_volume:
+    state: present
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ openstack_username }}"
+      password: "{{ openstack_password }}"
+      project_name: "{{ openstack_project }}"
+    size: "{{ openstack_boot_volume_size }}"
+    display_name: "{{ openstack_boot_volume_name }}"
+    volume_type: "{{ openstack_boot_volume_type }}"
+    region_name: "{{ openstack_region }}"
+    image: "{{ openstack_image_id }}"

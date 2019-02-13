@@ -9,7 +9,7 @@
     name: "{{ inventory_hostname }}"
     region_name: "{{ openstack_region }}"
     availability_zone: "{{ openstack_availability_zone }}"
-    image: "{{ openstack_image_id }}"
+    boot_volume: "{{ openstack_boot_volume_name }}"
     key_name: "{{ openstack_key_name }}"
     timeout: 200
     flavor: "{{ openstack_flavor }}"
@@ -42,7 +42,7 @@
     name: "{{ inventory_hostname }}"
     region_name: "{{ openstack_region }}"
     availability_zone: "{{ openstack_availability_zone }}"
-    image: "{{ openstack_image_id }}"
+    boot_volume: "{{ openstack_boot_volume_name }}"
     key_name: "{{ openstack_key_name }}"
     timeout: 200
     flavor: "{{ openstack_flavor }}"
@@ -64,7 +64,7 @@
     name: "{{ inventory_hostname }}"
     region_name: "{{ openstack_region }}"
     availability_zone: "{{ openstack_availability_zone }}"
-    image: "{{ openstack_image_id }}"
+    boot_volume: "{{ openstack_boot_volume_name }}"
     key_name: "{{ openstack_key_name }}"
     timeout: 200
     flavor: "{{ openstack_flavor }}"

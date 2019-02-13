@@ -15,6 +15,9 @@ openstack_create_storage: false
 openstack_attach_storage: false
 
 # Storage related variables
+openstack_boot_volume_name: "{{ inventory_hostname }}-root"
+openstack_boot_volume_type: standard
+openstack_boot_volume_size: 31
 openstack_storage_name: default-storage
 openstack_storage_device: /dev/vdc
 openstack_storage_size: 20
