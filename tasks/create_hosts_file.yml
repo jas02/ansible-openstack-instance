@@ -20,7 +20,7 @@
 - name: update inventory file
   replace:
     path: "{{ openstack_hosts_filename }}"
-    regexp: '^({{ inventory_hostname }}.*) ansible_host=(.*)'
+    regexp: '^({{ inventory_hostname }}.*)'
     replace: '\1 ansible_host={{ float["floating_ip"]["floating_ip_address"] }}'
   environment:
     ANSIBLE_INVENTORY: "{{ openstack_hosts_filename }}"
