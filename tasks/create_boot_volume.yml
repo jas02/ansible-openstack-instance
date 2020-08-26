@@ -6,6 +6,8 @@
       username: "{{ openstack_username }}"
       password: "{{ openstack_password }}"
       project_name: "{{ openstack_project }}"
+      #      user_domain_name: "{{ openstack_user_domain_name }}"
+      #      project_domain_name: "{{ openstack_project_domain_name }}"
     size: "{{ openstack_boot_volume_size }}"
     display_name: "{{ openstack_boot_volume_name }}"
     volume_type: "{{ openstack_boot_volume_type }}"
