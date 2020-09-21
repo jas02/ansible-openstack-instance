@@ -32,6 +32,8 @@ openstack_dns_servers:
 openstack_username: username
 openstack_password: password
 openstack_project: project_name
+openstack_user_domain_name: Default
+openstack_project_domain_name: Default
 
 openstack_create_hosts_file: false
 openstack_hosts_filename: openstack/hosts-openshift
